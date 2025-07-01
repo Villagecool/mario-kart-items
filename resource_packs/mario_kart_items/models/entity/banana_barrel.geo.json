@@ -1,0 +1,41 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.banana_barrel",
+        "texture_width": 32,
+        "texture_height": 32,
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 2.5,
+        "visible_bounds_offset": [0, 0.75, 0]
+      },
+      "bones": [
+        {
+          "name": "rightItem",
+          "binding": "q.item_slot_to_bone_name(context.item_slot)",
+          "pivot": [-6, 15, 1]
+        },
+        {
+          "name": "bb_main",
+          "pivot": [0, 0, 0],
+          "parent": "rightItem",
+          "cubes": [
+            {
+              "origin": [-8, 0, -8],
+              "size": [16, 16, 16],
+              "uv": {
+                "north": { "uv": [16, 0], "uv_size": [16, 16] },
+                "east": { "uv": [16, 0], "uv_size": [16, 16] },
+                "south": { "uv": [16, 0], "uv_size": [16, 16] },
+                "west": { "uv": [16, 0], "uv_size": [16, 16] },
+                "up": { "uv": [16, 16], "uv_size": [-16, -16] },
+                "down": { "uv": [16, 32], "uv_size": [-16, -16] }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

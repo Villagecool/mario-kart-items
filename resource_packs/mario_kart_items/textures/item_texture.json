@@ -1,0 +1,87 @@
+{
+  "resource_pack_name": "custom_item_resource_pack",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "vc_koopa_shell": {
+      "textures": "textures/mk/items/green_shell"
+    },
+    "vc_banana_peel": {
+      "textures": "textures/mk/items/banana"
+    },
+    "vc_mushroom": {
+      "textures": "textures/mk/items/mushroom"
+    },
+    "vc_item_box": {
+      "textures": "textures/mk/items/item_box"
+    },
+    "vc_banana_barrel": {
+      "textures": "textures/mk/items/banana_barrel"
+    },
+    "vc_big_banana_peel": {
+      "textures": "textures/mk/items/big_banana"
+    },
+    "vc_blooper": {
+      "textures": "textures/mk/items/blooper"
+    },
+    "vc_bob_om_cannon": {
+      "textures": "textures/mk/items/bob_om_cannon"
+    },
+    "vc_bob_om": {
+      "textures": "textures/mk/items/bob_om"
+    },
+    "vc_fake_item": {
+      "textures": "textures/mk/items/fake_item"
+    },
+    "vc_boo": {
+      "textures": "textures/mk/items/boo"
+    },
+    "vc_bullet_bill": {
+      "textures": "textures/mk/items/bullet"
+    },
+    "vc_coin": {
+      "textures": "textures/mk/items/coin"
+    },
+    "vc_event_token": {
+      "textures": "textures/mk/items/event_coin"
+    },
+    "vc_fire_flower": {
+      "textures": "textures/mk/items/fire_flower"
+    },
+    "vc_ice_flower": {
+      "textures": "textures/mk/items/ice_flower"
+    },
+    "vc_boomerang_flower": {
+      "textures": "textures/mk/items/boomerang_flower"
+    },
+    "vc_super_horn": {
+      "textures": "textures/mk/items/horny"
+    },
+    "vc_spiny_shell": {
+      "textures": "textures/mk/items/red_shell"
+    },
+    "vc_blue_spiny_shell": {
+      "textures": "textures/mk/items/blue_shell"
+    },
+    "vc_mega_mushroom": {
+      "textures": "textures/mk/items/mega_mushroom"
+    },
+    "vc_gold_mushroom": {
+      "textures": "textures/mk/items/gold_mushroom"
+    },
+    "vc_coin_box": {
+      "textures": "textures/mk/items/coin_box"
+    },
+    "vc_coin_shell": {
+      "textures": "textures/mk/items/coin_shell"
+    },
+    "vc_lightning": {
+      "textures": "textures/mk/items/lightning"
+    },
+    "vc_feather": {
+      "textures": "textures/mk/items/feather"
+    },
+    "vc_star": {
+      "textures": "textures/mk/items/star"
+    }
+  }
+}

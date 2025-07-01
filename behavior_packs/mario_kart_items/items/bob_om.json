@@ -1,0 +1,20 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "vc:bob_om",
+      "menu_category": {
+        "category": "items",
+        "group": "vc:itemGroup.name.mkitems"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 2,
+      "minecraft:hand_equipped": true,
+      "minecraft:icon": "vc_bob_om",
+      "vc:mario_kart_item": {
+        "family": "bomb"
+      }
+    }
+  }
+}

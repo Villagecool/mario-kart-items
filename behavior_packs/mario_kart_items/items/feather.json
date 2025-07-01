@@ -1,0 +1,20 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "vc:feather",
+      "menu_category": {
+        "category": "items",
+        "group": "vc:itemGroup.name.mkitems"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
+      "minecraft:icon": "vc_feather",
+      "vc:mario_kart_item": {
+        "family": "feather"
+      }
+    }
+  }
+}

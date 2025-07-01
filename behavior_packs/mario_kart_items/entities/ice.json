@@ -1,0 +1,100 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "vc:ice",
+      "runtime_identifier": "minecraft:snowball",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "die": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["bomb", "mario", "inanimate", "mob"]
+      },
+      "minecraft:collision_box": {
+        "width": 0.5,
+        "height": 0.5
+      },
+      "minecraft:health": {
+        "value": 6,
+        "max": 6
+      },
+      "minecraft:projectile": {
+        "anchor": 1,
+        "power": 0.5,
+        "gravity": 0.05,
+        "angle_offset": 0.0,
+        "knockback": true,
+        "offset": [0, 0, 0],
+        "on_hit": {
+          "impact_damage": {
+            "damage": [1, 2],
+            "knockback": true,
+            "semi_random_diff_damage": false,
+            "destroy_on_hit": true
+          }
+        },
+        "should_bounce": true
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/empty.json"
+      },
+      "minecraft:timer": {
+        "time": 5,
+        "looping": true,
+        "time_down_event": {
+          "event": "vc:die",
+          "target": "self"
+        }
+      },
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "event": "vc:fire",
+            "target": "self",
+            "filters": {
+              "test": "distance_to_nearest_player",
+              "operator": "not",
+              "value": -1
+            }
+          }
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:persistent": {},
+      "minecraft:physics": {
+        "has_gravity": true
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      }
+    },
+
+    "events": {
+      "vc:die": {
+        "add": {
+          "component_groups": [
+            "die"
+          ]
+        }
+      },
+      "vc:fire": {
+        "queue_command": {
+          "command": [
+            "particle vc:ice_flower ~~~",
+            "scriptevent vc:bouncy"
+          ]
+        }
+      }
+    }
+  }
+}

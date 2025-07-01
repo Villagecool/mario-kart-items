@@ -1,0 +1,18 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "vc:big_banana",
+      "materials": {
+        "default": "villager_v2"
+      },
+      "textures": {
+        "default": "textures/mk/entity/big_banana"
+      },
+      "geometry": {
+        "default": "geometry.big_banana_peel"
+      },
+      "render_controllers": ["controller.render.zombie"]
+    }
+  }
+}

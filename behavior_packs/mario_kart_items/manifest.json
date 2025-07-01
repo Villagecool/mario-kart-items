@@ -1,0 +1,40 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "(Almost) Every item from the Mario Kart Series!",
+    "name": "Mario Kart Items",
+    "uuid": "0186b59d-7db7-4f87-8982-c6ecd064651a",
+    "version": [1, 0, 1],
+    "min_engine_version": [1, 20, 30]
+  },
+  "modules": [
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "8a7da55c-b87c-4983-a356-98019be9a0c3",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    },
+    {
+      "description": "Custom Items Behavior Pack",
+      "type": "data",
+      "uuid": "bff5ca33-70d4-4b60-8cd2-38914bbf40bb",
+      "version": [1, 0, 1]
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.0.0"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.0.0"
+    },
+    {
+      "uuid": "d5c9bc01-6538-4059-91a1-492a79e7f2f8",
+      "version": [1, 0, 1]
+    }
+  ]
+}

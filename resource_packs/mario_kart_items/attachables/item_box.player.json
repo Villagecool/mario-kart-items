@@ -1,0 +1,42 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:attachable": {
+    "description": {
+      "identifier": "vc:real_item_box",
+      "item": { "vc:real_item_box": "query.is_owner_identifier_any('minecraft:player')" },
+      "materials": {
+        "default": "entity_emissive_alpha_one_sided",
+        "enchanted": "entity_alphatest_glint"
+      },
+      "textures": {
+        "default": "textures/mk/entity/item_box",
+        "enchanted": "textures/misc/enchanted_item_glint"
+      },
+      "geometry": {
+        "default": "geometry.item_box"
+      },
+      "animations": {
+        "spin": "animation.item_box.spin1st",
+        "hold_first_person": "animation.item.first",
+        "hold_third_person": "animation.item.third"
+      },
+      "scripts": {
+        "pre_animation": [
+          "variable.off_x = 5;",
+          "variable.off_y = 3;",
+          "variable.off_z = 4;",
+          "variable.off_x3 = -5;",
+          "variable.off_y3 = -10;",
+          "variable.off_z3 = 5;",
+          "variable.scale = 0.5;"
+        ],
+        "animate": [
+          "spin",
+          { "hold_first_person": "context.is_first_person" },
+          { "hold_third_person": "!context.is_first_person" }
+        ]
+      },
+      "render_controllers": ["controller.render.item_default"]
+    }
+  }
+}

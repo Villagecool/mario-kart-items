@@ -1,0 +1,64 @@
+{
+	"format_version": "1.10.0",
+	"animations": {
+		"animation.mushroom.first": {
+			"loop": true,
+			"bones": {
+				"bb_main": {
+					"rotation": [40, -40, -150],
+					"position": [-3, 7, 0]
+				}
+			}
+		},
+		"animation.banana.first": {
+			"loop": true,
+			"bones": {
+				"bb_main": {
+					"rotation": [40, -40, -150],
+					"position": [0, 18, -1]
+				}
+			}
+		},
+		"animation.item.first": {
+			"loop": true,
+			"bones": {
+				"bb_main": {
+					"rotation": [40, -40, -150],
+					"scale": "v.scale",
+					"position": ["v.off_x", "18+v.off_y", "-1+v.off_z"]
+				}
+			}
+		},
+		"animation.shell.first": {
+			"loop": true,
+			"bones": {
+				"bb_main": {
+					"rotation": [40, -40, -150],
+					"position": [0, -6, 0]
+				},
+				"shell": {
+					"rotation": [40, -40, -150],
+					"position": [-5, 16, -2]
+				},
+				"rightWing": {
+					"rotation": [-71, -46, 76],
+					"scale": 0
+				},
+				"leftWing": {
+					"rotation": [-45, 40, -57],
+					"scale": 0
+				}
+			}
+		},
+		"animation.bullet_bill.first": {
+			"loop": true,
+			"bones": {
+				"bb_main": {
+					"rotation": [0, -15, 210],
+					"position": [-8, 11, -8],
+					"scale": 0.25
+				}
+			}
+		}
+	}
+}

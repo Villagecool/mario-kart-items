@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "vc:item_box_fake",
+      "materials": {
+        "default": "entity_emissive_alpha_one_sided"
+      },
+      "textures": {
+        "default": "textures/mk/entity/fake_item_box_ground"
+      },
+      "scripts": {
+        "animate": ["pos"]
+      },
+      "animations": {
+        "pos": "animation.item_box.spin"
+      },
+      "geometry": {
+        "default": "geometry.item_box"
+      },
+      "render_controllers": ["controller.render.zombie"],
+      "spawn_egg": {
+        "texture": "vc_item_box"
+      }
+    }
+  }
+}

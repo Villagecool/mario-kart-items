@@ -1,0 +1,18 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "vc:banana",
+      "materials": {
+        "default": "villager_v2"
+      },
+      "textures": {
+        "default": "textures/mk/entity/banana_peel"
+      },
+      "geometry": {
+        "default": "geometry.banana_peel"
+      },
+      "render_controllers": ["controller.render.zombie"]
+    }
+  }
+}

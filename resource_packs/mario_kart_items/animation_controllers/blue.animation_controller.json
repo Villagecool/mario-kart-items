@@ -1,0 +1,21 @@
+{
+	"format_version": "1.10.0",
+	"animation_controllers": {
+		"controller.animation.blue.wings": {
+			"states": {
+				"default": {
+					"animations": ["close_wings"],
+					"transitions": [
+						{"active": "!query.is_on_ground"}
+					]
+				},
+				"active": {
+					"animations": ["open_wings"],
+					"transitions": [
+						{"default": "query.is_on_ground"}
+					]
+				}
+			}
+		}
+	}
+}

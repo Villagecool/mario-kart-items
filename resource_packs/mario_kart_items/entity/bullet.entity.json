@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "vc:bullet",
+      "materials": {
+        "default": "villager_v2"
+      },
+      "textures": {
+        "default": "textures/mk/entity/bullet"
+      },
+      "animations": {
+        "basic": "animation.bullet_bill.fire"
+      },
+      "scripts": {
+        "animate": ["basic"]
+      },
+      "particle_effects": {
+        "fire": "vc:bullet_fire"
+      },
+      "geometry": {
+        "default": "geometry.bullet_bill"
+      },
+      "render_controllers": ["controller.render.zombie"]
+    }
+  }
+}

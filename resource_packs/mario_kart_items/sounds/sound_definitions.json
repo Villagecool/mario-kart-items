@@ -1,0 +1,100 @@
+{
+  "format_version": "1.21.30",
+  "sound_definitions": {
+    "mk.blue_shell.explode": {
+      "category": "hostile",
+      "sounds": ["sounds/mk/blue_shell_explode"]
+    },
+    "mk.blue_shell.warn": {
+      "category": "hostile",
+      "sounds": ["sounds/mk/blue_shell_warn"]
+    },
+    "mk.red_shell.warn": {
+      "category": "hostile",
+      "sounds": ["sounds/mk/red_shell_warn"]
+    },
+    "mk.green_shell.warn": {
+      "category": "hostile",
+      "sounds": ["sounds/mk/green_shell_warn"]
+    },
+    "mk.bob_om.explode": {
+      "category": "hostile",
+      "sounds": ["sounds/mk/bob-oom"]
+    },
+    "mk.boo": {
+      "category": "ui",
+      "sounds": ["sounds/mk/boo"]
+    },
+    "mk.boost": {
+      "category": "hostile",
+      "sounds": ["sounds/mk/boost"]
+    },
+    "mk.coin": {
+      "category": "hostile",
+      "sounds": ["sounds/mk/coin"]
+    },
+    "mk.feather": {
+      "category": "hostile",
+      "sounds": ["sounds/mk/feather"]
+    },
+    "mk.hit": {
+      "category": "hostile",
+      "sounds": ["sounds/mk/gothit"]
+    },
+    "mk.item": {
+      "category": "ui",
+      "sounds": ["sounds/mk/gotitem"]
+    },
+    "mk.wii.item": {
+      "category": "ui",
+      "sounds": ["sounds/mk/mario-kart-wii-item-box"]
+    },
+    "mk.OR": {
+      "category": "ui",
+      "sounds": ["sounds/mk/ORRRRR"]
+    },
+    "mk.roulette": {
+      "category": "hostile",
+      "sounds": ["sounds/mk/roulette"]
+    },
+    "mk.shell.bounce": {
+      "category": "hostile",
+      "sounds": ["sounds/mk/shellbounce"]
+    },
+    "mk.star": {
+      "category": "ui",
+      "sounds": ["sounds/mk/star"]
+    },
+    "mk.bill": {
+      "category": "ui",
+      "sounds": ["sounds/mk/bill"]
+    },
+    "mk.fire_flower": {
+      "category": "ui",
+      "sounds": ["sounds/mk/fire_flower"]
+    },
+    "mk.ice_flower": {
+      "category": "ui",
+      "sounds": ["sounds/mk/ice_flower"]
+    },
+    "mk.boomerang": {
+      "category": "ui",
+      "sounds": ["sounds/mk/boomerang"]
+    },
+    "mk.blooper": {
+      "category": "ui",
+      "sounds": ["sounds/mk/blooper"]
+    },
+    "mk.horn": {
+      "category": "ui",
+      "sounds": [
+        "sounds/mk/horn/1",
+        "sounds/mk/horn/2",
+        "sounds/mk/horn/3",
+        "sounds/mk/horn/4",
+        "sounds/mk/horn/5",
+        "sounds/mk/horn/6"
+      ]
+    }
+  }
+}

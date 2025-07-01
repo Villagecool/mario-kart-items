@@ -1,0 +1,20 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "vc:bullet_bill",
+      "menu_category": {
+        "category": "items",
+        "group": "vc:itemGroup.name.mkitems"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
+      "minecraft:icon": "vc_bullet_bill",
+      "vc:mario_kart_item": {
+        "family": "bullet"
+      }
+    }
+  }
+}

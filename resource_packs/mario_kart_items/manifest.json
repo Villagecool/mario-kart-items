@@ -1,0 +1,18 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "(Almost) Every item from the Mario Kart Series!",
+    "name": "Mario Kart Items",
+    "uuid": "d5c9bc01-6538-4059-91a1-492a79e7f2f8",
+    "version": [1, 0, 1],
+    "min_engine_version": [1, 20, 30]
+  },
+  "modules": [
+    {
+      "description": "Demo Resource Pack",
+      "type": "resources",
+      "uuid": "75ac0a8c-a570-4bc1-bf10-7e4947117ff8",
+      "version": [1, 0, 1]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "vc:fake_item_box",
+      "menu_category": {
+        "category": "items",
+        "group": "vc:itemGroup.name.mkitems"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:hand_equipped": true,
+      "minecraft:icon": "vc_fake_item",
+      "minecraft:entity_placer": {
+        "entity": "vc:item_box_fake"
+      }
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "vc:cannon",
+      //"runtime_identifier": "minecraft:armor_stand",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "boom": {
+        "minecraft:explode": {
+          
+          "sound_effect": "nonelamo",
+          "breaks_blocks": false,
+          "causes_fire": false,
+          "fuse_lit": true,
+          "power": 1
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["equip", "inanimate", "mob"]
+      },
+      "minecraft:collision_box": {
+        "width": 0.5,
+        "height": 0.5
+      },
+      "minecraft:health": {
+        "value": 6,
+        "max": 6
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/empty.json"
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:persistent": {},
+      "minecraft:physics": {
+        "has_collision": false,
+        "has_gravity": false
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      }
+    },
+
+    "events": {
+      "boom": {
+        "add": {
+          "component_groups": ["boom"]
+        }
+      }
+    }
+  }
+}

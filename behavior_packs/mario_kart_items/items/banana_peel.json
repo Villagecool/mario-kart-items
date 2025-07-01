@@ -1,0 +1,26 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:item": {
+    "description": {
+      "identifier": "vc:banana_peel",
+      "menu_category": {
+        "category": "items",
+        "group": "vc:itemGroup.name.mkitems"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 3,
+      "minecraft:hand_equipped": true,
+      "minecraft:icon": "vc_banana_peel",
+      "minecraft:throwable": {
+        "do_swing_animation": true
+      },
+
+      "minecraft:projectile": {
+        "minimum_critical_power": 1.25,
+        "projectile_entity": "vc:banana"
+      },
+      "minecraft:use_animation": "bow"
+    }
+  }
+}

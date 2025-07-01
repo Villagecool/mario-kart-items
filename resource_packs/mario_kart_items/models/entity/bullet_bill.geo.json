@@ -1,0 +1,117 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.bullet_bill",
+				"texture_width": 128,
+				"texture_height": 64,
+				"visible_bounds_width": 7,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "rightItem",
+					"pivot": [-6, 15, 1],
+					"binding": "q.item_slot_to_bone_name(context.item_slot)"
+				},
+				{
+					"name": "bb_main",
+					"parent": "rightItem",
+					"pivot": [0, 12, 0],
+					"rotation": [0, 180, 0],
+					"cubes": [
+						{
+							"origin": [-15, 31, -41],
+							"size": [32, 48, 32],
+							"pivot": [16, 31, -40],
+							"rotation": [-90, 0, 0],
+							"uv": {
+								"north": {"uv": [0, 0], "uv_size": [32, 48]},
+								"east": {"uv": [32, 0], "uv_size": [32, 48]},
+								"south": {"uv": [0, 0], "uv_size": [32, 48]},
+								"west": {"uv": [64, 0], "uv_size": [-32, 48]},
+								"up": {"uv": [96, 32], "uv_size": [-32, -32]},
+								"down": {"uv": [96, 64], "uv_size": [-32, -32]}
+							}
+						},
+						{
+							"origin": [-15, 0, -34],
+							"size": [32, 32, 5],
+							"uv": {
+								"north": {"uv": [64, 0], "uv_size": [32, 32]},
+								"south": {"uv": [64, 0], "uv_size": [32, 32]}
+							}
+						},
+						{
+							"origin": [-13, 29, -35],
+							"size": [28, 5, 28],
+							"pivot": [14, 29, -34],
+							"rotation": [-90, 0, 0],
+							"uv": {
+								"north": {"uv": [0, 55], "uv_size": [28, 5]},
+								"east": {"uv": [0, 55], "uv_size": [28, 5]},
+								"south": {"uv": [0, 55], "uv_size": [28, 5]},
+								"west": {"uv": [0, 55], "uv_size": [28, 5]},
+								"up": {"uv": [28, 28], "uv_size": [-28, -28]},
+								"down": {"uv": [28, 28], "uv_size": [-28, -28]}
+							}
+						},
+						{
+							"origin": [18, 7, -31],
+							"size": [6, 6, 20],
+							"uv": {
+								"north": {"uv": [96, 0], "uv_size": [6, 6]},
+								"east": {"uv": [96, 0], "uv_size": [20, 6]},
+								"south": {"uv": [96, 0], "uv_size": [6, 6]},
+								"west": {"uv": [96, 0], "uv_size": [20, 6]},
+								"up": {"uv": [102, 20], "uv_size": [-6, -20]},
+								"down": {"uv": [102, 20], "uv_size": [-6, -20]}
+							}
+						},
+						{
+							"origin": [16, 5, -14],
+							"size": [10, 10, 10],
+							"uv": {
+								"north": {"uv": [96, 30], "uv_size": [10, 10]},
+								"east": {"uv": [96, 30], "uv_size": [10, 10]},
+								"south": {"uv": [106, 20], "uv_size": [10, 10]},
+								"west": {"uv": [96, 20], "uv_size": [10, 10]},
+								"up": {"uv": [116, 20], "uv_size": [-10, -10]},
+								"down": {"uv": [106, 40], "uv_size": [-10, -10]}
+							}
+						},
+						{
+							"origin": [-24, 5, -14],
+							"size": [10, 10, 10],
+							"uv": {
+								"north": {"uv": [96, 30], "uv_size": [10, 10]},
+								"east": {"uv": [106, 20], "uv_size": [-10, 10]},
+								"south": {"uv": [116, 20], "uv_size": [-10, 10]},
+								"west": {"uv": [96, 20], "uv_size": [10, 10]},
+								"up": {"uv": [106, 20], "uv_size": [10, -10]},
+								"down": {"uv": [106, 40], "uv_size": [-10, -10]}
+							}
+						},
+						{
+							"origin": [-21, 7, -31],
+							"size": [6, 6, 20],
+							"uv": {
+								"north": {"uv": [96, 0], "uv_size": [6, 6]},
+								"east": {"uv": [96, 0], "uv_size": [20, 6]},
+								"south": {"uv": [96, 0], "uv_size": [6, 6]},
+								"west": {"uv": [96, 0], "uv_size": [20, 6]},
+								"up": {"uv": [102, 20], "uv_size": [-6, -20]},
+								"down": {"uv": [102, 20], "uv_size": [-6, -20]}
+							}
+						}
+					],
+					"locators": {
+						"fire_in_the_hole": [0, 16, -37]
+					}
+				}
+			]
+		}
+	]
+}

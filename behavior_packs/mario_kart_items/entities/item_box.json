@@ -1,0 +1,114 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "vc:item_box",
+      //"runtime_identifier": "minecraft:armor_stand",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "vc:desp": {
+        "minecraft:instant_despawn": {
+          "remove_child_entities": false
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["armor_stand", "inanimate", "mob"]
+      },
+      "minecraft:collision_box": {
+        "width": 0.5,
+        "height": 1.975
+      },
+      "minecraft:health": {
+        "value": 6,
+        "max": 6
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/empty.json"
+      },
+      "minecraft:knockback_resistance": {
+        "value": 200,
+        "max": 200
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "on_damage": {
+              "filters": [{
+                "all_of": [
+                  {"test": "is_sneaking", "subject": "other", "value": true},
+                  {"test": "is_family", "subject": "other", "value": "player"}
+                ]
+              }],
+              "event": "vc:desp"
+            },
+            "deals_damage": "no"
+          },
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "fall",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "event": "vc:lets_go_gambleing",
+            "target": "self",
+            "filters": {
+              "all_of": [
+                {
+                  "test": "in_lava",
+                  "value": false
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:persistent": {},
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      }
+    },
+
+    "events": {
+      "vc:desp": {
+        "add": {
+          "component_groups": [
+            "vc:desp"
+          ]
+        }
+      },
+      "vc:lets_go_gambleing": {
+        "queue_command": {
+          "command": [
+            "execute if entity @a[r=1] unless entity @s[tag=cooldown] run playsound random.glass @a ~~~",
+            "execute if entity @a[r=1] unless entity @s[tag=cooldown] as @a[r=1] run scriptevent vc:item_roulette",
+            "execute if entity @a[r=1] unless entity @s[tag=cooldown] run scriptevent vc:deactivate_box"
+          ]
+        }
+      }
+    }
+  }
+}

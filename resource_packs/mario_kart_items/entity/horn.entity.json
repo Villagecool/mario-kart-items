@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "vc:horn",
+      "materials": {
+        "default": "villager_v2"
+      },
+      "textures": {
+        "default": "textures/mk/entity/horny"
+      },
+      "animations": {
+        "basic": "animation.horny.blast"
+      },
+      "scripts": {
+        "animate": ["basic"]
+      },
+      "particle_effects": {
+        "super_horn_use": "vc:super_horn_use"
+      },
+      "geometry": {
+        "default": "geometry.horny"
+      },
+      "render_controllers": ["controller.render.zombie"]
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.item_box.spin": {
+			"loop": true,
+			"bones": {
+				"questionmark": {
+					"rotation": ["-query.camera_rotation(0)", "query.camera_rotation(1) + 90", 0],
+					"position": [0, "16+math.sin(query.anim_time*200)*4", 0]
+				},
+				"box": {
+					"rotation": ["query.anim_time*200", "query.anim_time*200", 0],
+					"position": [0, "16+math.sin(query.anim_time*200)*3", 0]
+				}
+			}
+		},
+		"animation.item_box.spin1st": {
+			"loop": true,
+			"bones": {
+				"questionmark": {
+					"rotation": [-2, -29, -5],
+					"position": [0, "16+math.sin(query.anim_time*200)*4", 0]
+				},
+				"box": {
+					"rotation": ["query.anim_time*200", "query.anim_time*200", 0],
+					"position": [0, "16+math.sin(query.anim_time*200)*3", 0]
+				}
+			}
+		}
+	}
+}

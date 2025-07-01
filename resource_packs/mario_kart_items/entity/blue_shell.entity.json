@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "vc:blue_shell",
+      "materials": {
+        "default": "villager_v2"
+      },
+      "textures": {
+        "default": "textures/mk/entity/blue_spiny_shell"
+      },
+      "scripts": {
+        "animate": ["pos", "wings"]
+      },
+      "animations": {
+        "wings": "controller.animation.blue.wings",
+        "pos": "animation.koopa_shell.walk",
+        "close_wings": "animation.koopa_shell.close_wings",
+        "open_wings": "animation.koopa_shell.open_wings"
+      },
+      "geometry": {
+        "default": "geometry.koopa_shell"
+      },
+      "render_controllers": ["controller.render.zombie"]
+    }
+  }
+}

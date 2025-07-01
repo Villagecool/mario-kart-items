@@ -1,0 +1,105 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "vc:item_box_fake",
+      //"runtime_identifier": "minecraft:armor_stand",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "boom": {
+        "minecraft:explode": {
+          
+          "sound_effect": "nonelamo",
+          "particle_effect": "wind_burst",
+          "breaks_blocks": false,
+          "causes_fire": false,
+          "fuse_lit": true,
+          "power": 1
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["armor_stand", "inanimate", "mob"]
+      },
+      "minecraft:collision_box": {
+        "width": 0.5,
+        "height": 1.975
+      },
+      "minecraft:health": {
+        "value": 6,
+        "max": 6
+      },
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "filters": { "test": "in_lava", "subject": "self", "operator": "==", "value": true },
+            "cause": "lava",
+            "damage_per_tick": 4
+          }
+        ]
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/empty.json"
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          },
+          {
+            "cause": "entity_explosion",
+            "on_damage": {
+              "event": "boom"
+            },
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:environment_sensor": {
+        "triggers": [
+          {
+            "event": "vc:lets_go_gambleing",
+            "target": "self",
+            "filters": {
+              "all_of": [
+                {
+                  "test": "in_lava",
+                  "value": false
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:persistent": {},
+      "minecraft:physics": {},
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      }
+    },
+
+    "events": {
+      "vc:lets_go_gambleing": {
+        "queue_command": {
+          "command": [
+            "execute if entity @a[r=1] run playsound random.glass @a ~~~",
+            "execute if entity @a[r=1] run playsound mk.hit @a ~~~",
+            "execute if entity @a[r=1] run event entity @s boom"
+          ]
+        }
+      },
+      "boom": {
+        "add": {
+          "component_groups": ["boom"]
+        }
+      }
+    }
+  }
+}

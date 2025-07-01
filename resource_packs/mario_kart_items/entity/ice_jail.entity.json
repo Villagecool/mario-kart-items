@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "vc:ice_jail",
+      "materials": {
+        "default": "slime_outer"
+      },
+      "textures": {
+        "default": "textures/blocks/ice"
+      },
+      //"animations": {
+      //  "basic": "animation.bullet_bill.fire"
+      //},
+      //"scripts": {
+      //  "animate": ["basic"]
+      //},
+      //"particle_effects": {
+      //  "fire": "vc:bullet_fire"
+      //},
+      "geometry": {
+        "default": "geometry.ice_jail"
+      },
+      "render_controllers": ["controller.render.zombie"]
+    }
+  }
+}

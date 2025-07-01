@@ -1,0 +1,23 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.bob_om.walk": {
+			"loop": true,
+			"anim_time_update": "query.modified_distance_moved",
+			"bones": {
+				"rightLeg2": {
+					"rotation": ["30+(math.cos(query.anim_time * 38.17) * 40.0) - this", "-this", 0]
+				},
+				"leftLeg2": {
+					"rotation": ["30+(math.cos(query.anim_time * 38.17 + 180) * 40.0) - this", "-this", 0]
+				},
+				"bb_main": {
+					"position": [0, "(math.cos(query.anim_time * 38.17*2) * 0.5)", 0]
+				},
+				"wind": {
+					"rotation": [0, 0, "query.anim_time * 38.17"]
+				}
+			}
+		}
+	}
+}
