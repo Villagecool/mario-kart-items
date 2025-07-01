@@ -3,7 +3,7 @@
 - (Item not included are the mega mushroom and Arcade GP exclusives)
 
 Almost every item is specially coded to have custom physics and behave like they would in a Minecraft setting!
-- I had to use trig on this! :shock:
+- I had to use trig on this! 😱
 
 Currently the project is slightly unfinished and is creative only. This is due to it lacking any form of balance
 
