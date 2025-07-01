@@ -9,7 +9,6 @@ Currently the project is slightly unfinished and is creative only. This is due t
 
 |Item|Use|
 |--|--|
-
 |Koopa Shell      |Spins in a Straight Line and Bounces off walls. Destroies after 10 seconds or hitting a target.
 |Banana Peel      |Can be thrown on ground. Damages any victim that hits it.
 |Mushroom         |Will thrust the player foreward for 2 seconds.
