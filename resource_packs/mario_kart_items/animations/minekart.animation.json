@@ -1,0 +1,29 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.minekart.base": {
+			"loop": true,
+			"bones": {
+				"root": {
+					"position": [0, "math.sin(query.anim_time*4000)*(0.2+query.modified_move_speed*0.2)", 0]
+				},
+				"rightItem": {
+					"rotation": [-72.5, -10, 10],
+					"position": [-8, -3.5, 8.5],
+					"scale": 3
+				}
+			}
+		},
+		"animation.minekart.blast": {
+			"animation_length": 1,
+			"bones": {
+				"root": {
+					"rotation": {
+						"0.0": ["math.sin((query.anim_time)*2000)*20", "90-query.anim_time*400", "math.sin(query.anim_time*1000)*20"],
+						"1.0": ["6.8303+math.sin((query.anim_time)*2000)*20", "-38.6706+query.anim_time*400", "19.3418+math.sin(query.anim_time*1000)*20"]
+					}
+				}
+			}
+		}
+	}
+}

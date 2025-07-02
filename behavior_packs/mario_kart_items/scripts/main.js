@@ -7,12 +7,16 @@ SERVER.system.beforeEvents.startup.subscribe((initEvent) => {
   initEvent.itemComponentRegistry.registerCustomComponent("vc:mario_kart_item", {
     onUse: (e, p) => {
 
+      const car = e.source.getComponent('minecraft:riding')?.entityRidingOn //gets the minekart (if present)
       //shroom
       if (p.params.family == "mushroom") {
 
         const vec = getForwardVector(e.source.getRotation().y);
         e.source.addTag("usedMushroom");
-        const stawp = SERVER.system.runInterval(() => { e.source.applyKnockback({ x: vec.x * 2, z: vec.z * 2 }, 0); }, 1);
+        const stawp = SERVER.system.runInterval(() => { 
+          if (car) car.applyKnockback({ x: vec.x * 2, z: vec.z * 2 }, 0);
+          else e.source.applyKnockback({ x: vec.x * 2, z: vec.z * 2 }, 0);
+         }, 1);
         SERVER.system.runTimeout(() => { SERVER.system.clearRun(stawp); }, 10);
 
         SERVER.system.runTimeout(() => { e.source.removeTag("usedMushroom"); }, 30); //for shell dodging
@@ -34,7 +38,7 @@ SERVER.system.beforeEvents.startup.subscribe((initEvent) => {
         var angle = e.source.getRotation().y;
         let canExplode = false;
 
-        const possibleTargets = e.source.dimension.getEntities().filter((me) => /*me.nameTag != e.source.nameTag &&*/ !me?.getComponent("minecraft:type_family")?.hasTypeFamily("inanimate") && me.typeId != "minecraft:item")
+        const possibleTargets = e.source.dimension.getEntities().filter((me) => me.nameTag != e.source.nameTag && !me?.getComponent("minecraft:type_family")?.hasTypeFamily("inanimate") && me.typeId != "minecraft:item")
         const target = type == "vc:blue_shell" ? getFarthestEntity(possibleTargets, shell.location) : getNearestEntity(possibleTargets, shell.location);
 
         const movement = SERVER.system.runInterval(() => {
@@ -123,17 +127,28 @@ SERVER.system.beforeEvents.startup.subscribe((initEvent) => {
       } else if (p.params.family == "feather") {
             decripateStack(e.source)
         e.source.playSound('mk.feather')
-        e.source.applyKnockback({x:0,z:0}, 1)
+        
+        if (car)  car.applyKnockback({x:0,z:0}, 1);
+        else e.source.applyKnockback({x:0,z:0}, 1);
 
       } else if (p.params.family == "bullet") {
         const entity = e.source.dimension.spawnEntity('vc:bullet', e.source.location)
         entity.setRotation(e.source.getRotation())
         decripateStack(e.source);
-        entity.getComponent('minecraft:rideable').addRider(e.source)
+        entity.getComponent('minecraft:rideable').addRider(car ? car : e.source)
         e.source.runCommand('camera @s set minecraft:third_person')
         e.source.playSound('mk.bill')
         const movement = SERVER.system.runInterval(()=> {
-          if (entity.getComponent('minecraft:rideable').getRiders().length <= 0) { SERVER.system.clearRun(movement); entity.remove(); e.source.runCommand('camera @s clear'); e.source.runCommand('stopsound @s mk.bill'); return;}
+          if (entity.getComponent('minecraft:rideable').getRiders().length <= 0 || 
+          (car && car.getComponent('minecraft:rideable').getRiders().length <= 0)) { 
+            SERVER.system.clearRun(movement); 
+            entity.remove(); 
+            e.source.runCommand('camera @s clear'); 
+            e.source.runCommand('stopsound @s mk.bill'); 
+            if (car) car.getComponent('minecraft:rideable').addRider(e.source)
+            return;
+          }
+          e.source.addEffect('invisibility', 1, {showParticles: false})
           const movementvec = getForwardVector(e.source.getRotation().y);
           entity.setRotation(e.source.getRotation())
           var vert = (Math.abs(entity.getVelocity().x)+Math.abs(entity.getVelocity().z) < 0.2 ? 0.02 : 0)
@@ -223,9 +238,9 @@ SERVER.system.beforeEvents.startup.subscribe((initEvent) => {
               e.source.dimension.playSound('mk.hit',e.source.getHeadLocation())
               bomb.setRotation(e.source.getRotation())
               bomb.applyImpulse({
-                  x: getForwardVector(e.source.getRotation().y).x*2,
+                  x: getForwardVector(e.source.getRotation().y).x*3,
                   y: 0.5,
-                  z: getForwardVector(e.source.getRotation().y).z*2
+                  z: getForwardVector(e.source.getRotation().y).z*3
               })
               bomb.nameTag = e.source.nameTag;
               SERVER.system.runTimeout(()=>{bomb.triggerEvent('boom'); bomb.runCommand(`playsound mk.bob_om.explode @a ~~~`); bomb.runCommand(`particle vc:bomb_om_explode ~~~`);},20)
@@ -368,8 +383,10 @@ SERVER.system.beforeEvents.startup.subscribe((initEvent) => {
           e.source.playSound('mk.star')
           const movement = SERVER.system.runInterval(()=> {
             e.source.addEffect('speed', 1, {amplifier:2,showParticles:false})
+            car?.addEffect('speed', 1, {amplifier:2,showParticles:false})
             e.source.addEffect('resistance', 1, {amplifier:255,showParticles:false})
             e.source.spawnParticle('vc:starman', e.source.getHeadLocation())
+            e.source.runCommand('kill @e[family=mario,r=1.5]')
             e.source.runCommand(`damage @e[r=1.5,name=!"${e.source.nameTag}"] 5 fireworks`)
           },1)
           SERVER.system.runTimeout(() => { 
@@ -378,6 +395,13 @@ SERVER.system.beforeEvents.startup.subscribe((initEvent) => {
       }
     }
   });
+  initEvent.blockComponentRegistry.registerCustomComponent('vc:slow_kart', {
+    onTick: e => {
+      e.dimension.getEntitiesAtBlockLocation(e.block.center()).filter(me=>me.typeId == 'vc:minekart').forEach(kart => {
+        kart.addEffect('slowness', 2, {showParticles:false,amplifier:3})
+      })
+    }
+  })
 });
 //all possible items
 // ...::3 indicated the item count
@@ -459,6 +483,28 @@ SERVER.system.afterEvents.scriptEventReceive.subscribe((e) => {
       })
     }
   }
+  if (e.id == "vc:cartboom") {
+    e.sourceEntity.clearVelocity()
+    e.sourceEntity.playAnimation('animation.minekart.blast')
+    e.sourceEntity.addEffect('slowness', 20, {amplifier:255,showParticles:false})
+  }
+  if (e.id == "vc:cartbreak") {
+    if (e.sourceEntity.hasTag('areyoureallysure')) {
+      e.sourceEntity.dimension.spawnItem(new SERVER.ItemStack('vc:minekart', 1), e.sourceEntity.location)
+      e.sourceEntity.triggerEvent('die')
+
+    } else if (e.sourceEntity.hasTag('areyoursure')) {
+      e.sourceEntity.addTag('areyoureallysure')
+      SERVER.system.runTimeout(()=>{
+        e.sourceEntity.removeTag('areyoureallysure')
+      },10)
+    }
+    e.sourceEntity.addTag('areyoursure')
+    e.sourceEntity.playAnimation('animation.minekart.blast')
+    SERVER.system.runTimeout(()=>{
+      e.sourceEntity.removeTag('areyoursure')
+    },10)
+  }
 });
 SERVER.world.afterEvents.projectileHitEntity.subscribe(e=>{
   if (e.projectile.typeId == 'vc:ice') {
@@ -480,6 +526,39 @@ SERVER.world.afterEvents.projectileHitEntity.subscribe(e=>{
     e.getEntityHit().entity.setOnFire(5, true)
   }
 })
+SERVER.world.afterEvents.playerInteractWithEntity.subscribe(e=>{
+  //console.warn('replaceitem entity @s slot.weapon.mainhand 0 banner 1 ' + superStackGetData(e.player))
+  if (e.itemStack?.typeId == 'minecraft:banner' && e.player.isSneaking) {
+    //e.player.runCommand('give @s minecraft:banner 1 ' + superStackGetData(e.target, 'minecraft:banner'))
+    //e.target.dimension.playSound('armor.equip_leather', e.target.location)
+    //e.target.runCommand('replaceitem entity @s slot.weapon.mainhand 0 banner 1 ' + superStackGetData(e.player, 'minecraft:banner'))
+    //decripateStack(e.player)
+  } else if (!e.player.isSneaking) {
+    e.target.getComponent('minecraft:rideable').addRider(e.player)
+  }
+
+    //look at all these failed attempts lmao
+  
+  //console.log(e.target.getComponent('minecraft:equippable').getEquipment("Mainhand").typeId)
+  //console.log(JSON.stringify(e.itemStack.getComponent('minecraft:dyeable')?.color))
+  //for (let i = 0; i < e.target.getComponent('minecraft:inventory').container.size; i++) {
+  //  console.log(e.target.getComponent('minecraft:inventory').container.setItem(i,e.itemStack))
+  //}
+})
+/**
+ * Get item data function modified from the SuperStack library
+ * gets the data of the item the player is holding
+ * @param {SERVER.PLayer} player the player
+ * @returns {Number} the data value
+ */
+function superStackGetData(player, typeId) {
+  let data = 0
+  for (data; data < 100; data++) {
+      const success = player.runCommand(`testfor @s[hasitem={item=${typeId},data=${data},slot=0,location=slot.weapon.mainhand}]`).successCount
+      if (success >= 1) break;
+  }
+  return data
+}
 /**
  *
  * @param {SERVER.Vector3} loc Area to spawn coins

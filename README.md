@@ -35,3 +35,11 @@ Currently the project is slightly unfinished and is creative only. This is due t
 |Lightning        |Summons lightning to anyone nearby.
 |Feather          |Pushes the player up.
 |Starman          |Gives the player invicibility, "thorns," and speed for 15 seconds.
+
+## Minekart
+The minekart is your new mode of transportation
+- It will spin out whenever damaged
+- the "slow_kart" block will determine "offroad" areas
+
+You can sneak and interact with the minekart to add a banner!
+- To remove or change it you must sneak and interact with an empty hand

@@ -23,7 +23,7 @@
       },
       "minecraft:rideable": {
         "controlling_seat": 0,
-        "family_types": ["player"],
+        "family_types": ["player", "minekart"],
         "seats": {
           "position": [0, 0.2, -0.7],
           "rotate_rider_by": 0,

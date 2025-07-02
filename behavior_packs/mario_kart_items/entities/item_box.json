@@ -40,8 +40,8 @@
         "table": "loot_tables/empty.json"
       },
       "minecraft:knockback_resistance": {
-        "value": 200,
-        "max": 200
+        "value": 1,
+        "max": 1
       },
       "minecraft:damage_sensor": {
         "triggers": [
@@ -103,9 +103,9 @@
       "vc:lets_go_gambleing": {
         "queue_command": {
           "command": [
-            "execute if entity @a[r=1] unless entity @s[tag=cooldown] run playsound random.glass @a ~~~",
-            "execute if entity @a[r=1] unless entity @s[tag=cooldown] as @a[r=1] run scriptevent vc:item_roulette",
-            "execute if entity @a[r=1] unless entity @s[tag=cooldown] run scriptevent vc:deactivate_box"
+            "execute if entity @a[r=1.5] unless entity @s[tag=cooldown] run playsound random.glass @a ~~~",
+            "execute if entity @a[r=1.5] unless entity @s[tag=cooldown] as @a[r=1.5] run scriptevent vc:item_roulette",
+            "execute if entity @a[r=1.5] unless entity @s[tag=cooldown] run scriptevent vc:deactivate_box"
           ]
         }
       }

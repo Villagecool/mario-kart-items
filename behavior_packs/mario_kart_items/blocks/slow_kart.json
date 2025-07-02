@@ -1,0 +1,39 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:block": {
+    "description": {
+      "identifier": "vc:slow_kart_air",
+      "menu_category": {
+        "category": "items",
+        "group": "vc:itemGroup.name.mkitems"
+      }
+    },
+    "components": {
+      "minecraft:collision_box": false,
+      "minecraft:destructible_by_explosion": false,
+      "minecraft:light_dampening": 0,
+      "vc:slow_kart": {},
+      "minecraft:tick": {
+        "interval_range": [1,2],
+        "looping": true
+      },
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "can_contain_liquid": true,
+            "liquid_type": "water",
+            "on_liquid_touches": "no_reaction"
+          }
+        ]
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "air",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:geometry": "geometry.none",
+      "minecraft:replaceable": {}
+    }
+  }
+}

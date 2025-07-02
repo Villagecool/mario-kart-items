@@ -1,0 +1,137 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "vc:minekart",
+      "is_spawnable": false,
+      "is_summonable": true,
+      "is_experimental": false
+    },
+    "component_groups": {
+      "boom": {
+        "minecraft:transformation": {
+          "drop_equipment": true,
+          "drop_inventory": true,
+          "into": "vc:fire<vc:die>"
+        }
+      }
+    },
+    "components": {
+      "minecraft:type_family": {
+        "family": ["minekart", "inanimate", "mob"]
+      },
+      "minecraft:rideable": {
+        "controlling_seat": 0,
+        "family_types": ["player"],
+        "seats": {
+          "position": [0, 0.1, -0.2],
+          "rotate_rider_by": 0,
+          "dismount_mode": "default",
+          "min_rider_count": 0,
+          "max_rider_count": 1
+        },
+        "crouching_skip_interact": true,
+        "pull_in_entities": false,
+        "seat_count": 1
+      },
+      "minecraft:inventory": {
+        "can_be_siphoned_from": false,
+        "container_type": "minecart_hopper",
+        "inventory_size": 5,
+        "private": true
+      },
+      "minecraft:input_ground_controlled": {},
+      "minecraft:collision_box": {
+      	"width": 0.8,
+      	"height": 1.2
+      },
+      "minecraft:movement": {
+        "value": 0.25
+      },
+      "minecraft:health": {
+        "value": 1,
+        "max": 1
+      },
+      "minecraft:loot": {
+        "table": "loot_tables/empty.json"
+      },
+      "minecraft:interact": {
+        "interactions": [
+          {
+            "on_interact": {
+              "filters": {
+                "all_of": [
+                  { "test": "is_family", "subject": "other", "value": "player" },
+                  { "test": "has_equipment", "subject": "player", "domain": "hand", "value": "minecraft:banner"},
+                  { "test": "is_sneak_held", "subject": "other", "value": true }
+                ]
+              }
+            },
+            "play_sounds": "armor.equip_leather",
+            "give_item": true,
+            "take_item": true,
+            "interact_text": "action.interact.minecart"
+          }
+        ]
+      },
+      "minecraft:damage_sensor": {
+        "triggers": [
+          {
+            "cause": "entity_explosion",
+            "on_damage": {
+              "event": "boom"
+            },
+            "deals_damage": "no"
+          },
+          {
+            "cause": "block_explosion",
+            "on_damage": {
+              "event": "boom"
+            },
+            "deals_damage": "no"
+          },
+          {
+            "on_damage": {
+              "filters": {"test": "is_family", "subject": "other", "value": "player"},
+              "target": "self",
+              "event": "break"
+            },
+            "deals_damage": "no"
+          },
+          {
+            "cause": "all",
+            "deals_damage": "no"
+          }
+        ]
+      },
+      "minecraft:nameable": {},
+      "minecraft:persistent": {},
+      "minecraft:physics": {
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      }
+    },
+
+    "events": {
+      "break": {
+        "queue_command": {
+          "command": "scriptevent vc:cartbreak"
+        }
+      },
+      "die": {
+        "add": {
+          "component_groups": [
+            "boom"
+          ]
+        }
+      },
+      "boom": {
+        "queue_command": {
+          "command": "scriptevent vc:cartboom"
+        }
+      }
+    }
+  }
+}
